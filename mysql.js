@@ -3,7 +3,7 @@
  * @author David Spreekmeester <david@grrr.nl>
  */
 
-const mysql     = require('mysql2')
+const mysql     = require('serverless-mysql')
 const Client    = require('ssh2').Client;
 
 var tunnel = module.exports = {
@@ -46,7 +46,7 @@ var tunnel = module.exports = {
                         dbConfig.host = 'localhost'
                         dbConfig.stream = stream
 
-                        tunnel._sql = mysql.createConnection(dbConfig)
+                        tunnel._sql = mysql(dbConfig)
                         resolve(tunnel._sql)
                     }
                 )
